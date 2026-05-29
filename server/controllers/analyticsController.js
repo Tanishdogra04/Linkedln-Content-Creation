@@ -1,8 +1,6 @@
 const AnalyticsLog = require('../models/AnalyticsLog');
 
-// @desc    Retrieve user's creation metrics
-// @route   GET /api/analytics
-// @access  Private
+
 const getAnalytics = async (req, res) => {
   try {
     const userId = req.user.id;

@@ -50,8 +50,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5001;
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5001;
+  app.listen(PORT, () => {
+    console.log(`LinkedIn Content Creation Agent Server running on port ${PORT}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`LinkedIn Content Creation Agent Server running on port ${PORT}`);
-});
+module.exports = app;
