@@ -14,7 +14,7 @@ const app = express();
 
 // Global Middleware
 app.use(cors({
-  origin: ['https://linkedln-content-creation-x85j.vercel.app', 'http://localhost:3000'],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
