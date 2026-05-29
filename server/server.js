@@ -30,13 +30,12 @@ app.use('/api/calendar', require('./routes/calendar'));
 app.use('/api/analytics', require('./routes/analytics'));
 
 // Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'LinkedIn Content Creation Agent API Running'
   });
-}
+});
 
 // Centralized error handling middleware
 app.use((err, req, res, next) => {
