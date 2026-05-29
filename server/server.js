@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
@@ -27,6 +28,15 @@ app.use('/api/generate', require('./routes/generate'));
 app.use('/api/research', require('./routes/research'));
 app.use('/api/calendar', require('./routes/calendar'));
 app.use('/api/analytics', require('./routes/analytics'));
+
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+  });
+}
 
 // Centralized error handling middleware
 app.use((err, req, res, next) => {
