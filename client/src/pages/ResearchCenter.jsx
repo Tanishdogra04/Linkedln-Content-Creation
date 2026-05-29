@@ -56,25 +56,25 @@ const ResearchCenter = () => {
   };
 
   return (
-    <div class="flex flex-col gap-8">
+    <div className="flex flex-col gap-8">
       {/* Top action block */}
       <GlassCard hover={false} className="border-emerald-500/20 shadow-sm bg-emerald-50/30 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/5 to-teal-600/5 z-0"></div>
-        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div class="flex-1 max-w-xl">
-            <h3 class="font-display font-extrabold text-xl mb-1 text-slate-800">Auto-Research Portal</h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/5 to-teal-600/5 z-0"></div>
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex-1 max-w-xl">
+            <h3 className="font-display font-extrabold text-xl mb-1 text-slate-800">Auto-Research Portal</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
               Scan active digital networks for trending artificial intelligence, business models, and startup industry news, draft reaction guides, and view them immediately.
             </p>
           </div>
           <button
             onClick={triggerResearch}
             disabled={loading}
-            class="btn-primary min-w-[200px]"
+            className="btn-primary min-w-[200px]"
           >
             {loading ? (
               <>
-                <Loader2 size={18} class="animate-spin" />
+                <Loader2 size={18} className="animate-spin" />
                 <span>Scanning feeds...</span>
               </>
             ) : (
@@ -88,57 +88,57 @@ const ResearchCenter = () => {
       </GlassCard>
 
       {error && (
-        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm flex items-center gap-2 font-medium">
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm flex items-center gap-2 font-medium">
           <AlertCircle size={16} />
           <span>{error}</span>
         </div>
       )}
 
       {loading && (
-        <div class="flex flex-col items-center justify-center py-24 text-center">
-          <Loader2 size={42} class="text-emerald-500 animate-spin mb-4" />
-          <h4 class="font-display font-bold text-slate-700">Executing Deep Research Workflow</h4>
-          <p class="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed">
+        <div className="flex flex-col items-center justify-center py-24 text-center">
+          <Loader2 size={42} className="text-emerald-500 animate-spin mb-4" />
+          <h4 className="font-display font-bold text-slate-700">Executing Deep Research Workflow</h4>
+          <p className="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed">
             Fetching feeds from news endpoints, summarizing content, identifying tactical ideas, and writing emulated style templates.
           </p>
         </div>
       )}
 
       {result && (
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Article Analysis */}
-          <div class="lg:col-span-5 flex flex-col gap-6">
+          <div className="lg:col-span-5 flex flex-col gap-6">
             <GlassCard hover={false} className="bg-white border-slate-200">
-              <div class="flex items-center gap-2 mb-4">
-                <FileText size={18} class="text-emerald-500" />
-                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Source Analysis</span>
+              <div className="flex items-center gap-2 mb-4">
+                <FileText size={18} className="text-emerald-500" />
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Source Analysis</span>
               </div>
               
-              <h4 class="font-display font-extrabold text-lg text-slate-800 leading-snug mb-3">
+              <h4 className="font-display font-extrabold text-lg text-slate-800 leading-snug mb-3">
                 {result.headline}
               </h4>
 
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5 leading-relaxed">
-                <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest block mb-1">AI Summarization:</span>
-                <p class="text-slate-600 text-xs">{result.summary}</p>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5 leading-relaxed">
+                <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest block mb-1">AI Summarization:</span>
+                <p className="text-slate-600 text-xs">{result.summary}</p>
               </div>
 
-              <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 leading-relaxed">
-                <span class="text-[10px] font-semibold text-emerald-600 uppercase tracking-widest block mb-1">Content Strategy Concept:</span>
-                <p class="text-slate-700 text-xs font-medium">{result.contentIdea}</p>
+              <div className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 leading-relaxed">
+                <span className="text-[10px] font-semibold text-emerald-600 uppercase tracking-widest block mb-1">Content Strategy Concept:</span>
+                <p className="text-slate-700 text-xs font-medium">{result.contentIdea}</p>
               </div>
             </GlassCard>
 
             {/* Quick scheduling actions */}
             <GlassCard hover={false} className="border-emerald-200 bg-white">
-              <h4 class="font-bold text-slate-800 text-sm mb-1">Schedule Research Post</h4>
-              <p class="text-slate-500 text-xs leading-relaxed mb-4">
+              <h4 className="font-bold text-slate-800 text-sm mb-1">Schedule Research Post</h4>
+              <p className="text-slate-500 text-xs leading-relaxed mb-4">
                 Satisfied with this news-driven reaction post? Save it directly into the queue.
               </p>
               <button
                 onClick={handleAddToCalendar}
                 disabled={scheduling || scheduleSuccess}
-                class={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border transition-all duration-200 shadow-sm
+                className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border transition-all duration-200 shadow-sm
                   ${scheduleSuccess 
                     ? 'bg-emerald-50 text-emerald-600 border-emerald-200' 
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50 active:scale-98'
@@ -147,7 +147,7 @@ const ResearchCenter = () => {
               >
                 {scheduling ? (
                   <>
-                    <Loader2 size={14} class="animate-spin" />
+                    <Loader2 size={14} className="animate-spin" />
                     <span>Adding to queue...</span>
                   </>
                 ) : scheduleSuccess ? (
@@ -166,7 +166,7 @@ const ResearchCenter = () => {
           </div>
 
           {/* Generated post display */}
-          <div class="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-6">
             <NikBassiPostPreview 
               content={result.linkedinPost} 
               imageIdea={result.imageIdea}
@@ -176,12 +176,12 @@ const ResearchCenter = () => {
       )}
 
       {!result && !loading && (
-        <div class="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-300 rounded-2xl bg-white/50">
-          <div class="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm flex items-center justify-center text-emerald-600 mb-4">
+        <div className="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-300 rounded-2xl bg-white/50">
+          <div className="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm flex items-center justify-center text-emerald-600 mb-4">
             <Search size={28} />
           </div>
-          <h4 class="font-display font-bold text-slate-600 text-base">Research Dashboard Ready</h4>
-          <p class="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed">
+          <h4 className="font-display font-bold text-slate-600 text-base">Research Dashboard Ready</h4>
+          <p className="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed">
             Click the scrape button above to trigger news queries and extract value insights.
           </p>
         </div>

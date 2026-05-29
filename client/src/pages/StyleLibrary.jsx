@@ -130,24 +130,24 @@ What’s your biggest hurdle with organic content? Let’s chat in the comments.
   };
 
   return (
-    <div class="flex flex-col gap-8">
+    <div className="flex flex-col gap-8">
       {/* Top Welcome Header */}
       <GlassCard hover={false} className="border-emerald-500/20 shadow-sm bg-emerald-50/30">
-        <div class="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4">
           <div>
-            <h3 class="font-display font-extrabold text-xl mb-1 text-slate-800">Style Training Library (RAG)</h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
+            <h3 className="font-display font-extrabold text-xl mb-1 text-slate-800">Style Training Library (RAG)</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
               Define the tone, spacing benchmarks, and storytelling structure guidelines that the AI uses during prompt compilation.
             </p>
           </div>
-          <div class="flex gap-2">
+          <div className="flex gap-2">
             {posts.length === 0 && (
-              <button onClick={seedLibrary} class="btn-secondary text-xs py-2">
+              <button onClick={seedLibrary} className="btn-secondary text-xs py-2">
                 Seed Library
               </button>
             )}
             {!showForm && (
-              <button onClick={() => setShowForm(true)} class="btn-primary">
+              <button onClick={() => setShowForm(true)} className="btn-primary">
                 <Plus size={16} />
                 <span>Add Template</span>
               </button>
@@ -159,60 +159,60 @@ What’s your biggest hurdle with organic content? Let’s chat in the comments.
       {/* Entry / Update Drawer */}
       {showForm && (
         <GlassCard hover={false} className="border-slate-200 bg-white shadow-md">
-          <div class="flex items-center justify-between mb-5">
-            <h4 class="font-display font-extrabold text-lg text-slate-800">
+          <div className="flex items-center justify-between mb-5">
+            <h4 className="font-display font-extrabold text-lg text-slate-800">
               {editingPost ? 'Edit Style Example' : 'Add Style Benchmark'}
             </h4>
-            <button onClick={resetForm} class="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg hover:bg-slate-100">
+            <button onClick={resetForm} className="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg hover:bg-slate-100">
               <X size={18} />
             </button>
           </div>
 
-          <form onSubmit={handleCreateOrUpdate} class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Example Description / Title</label>
+          <form onSubmit={handleCreateOrUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Example Description / Title</label>
                 <input
                   type="text"
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g. Scaling organic reach breakdown hook"
-                  class="input-field"
+                  className="input-field"
                 />
               </div>
 
-              <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Example Category</label>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Example Category</label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  class="input-field"
+                  className="input-field"
                 >
                   {categories.map((c, i) => (
-                    <option key={i} value={c} class="bg-white text-slate-800">{c}</option>
+                    <option key={i} value={c} className="bg-white text-slate-800">{c}</option>
                   ))}
                 </select>
               </div>
             </div>
 
-            <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Post content (Observe double lines spacing)</label>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Post content (Observe double lines spacing)</label>
               <textarea
                 required
                 rows={9}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Paste the high-performing LinkedIn post here..."
-                class="input-field resize-none h-full min-h-[220px]"
+                className="input-field resize-none h-full min-h-[220px]"
               />
             </div>
 
-            <div class="md:col-span-2 flex justify-end gap-3 border-t border-slate-200 pt-4 mt-2">
-              <button type="button" onClick={resetForm} class="btn-secondary py-2 text-xs">
+            <div className="md:col-span-2 flex justify-end gap-3 border-t border-slate-200 pt-4 mt-2">
+              <button type="button" onClick={resetForm} className="btn-secondary py-2 text-xs">
                 Cancel
               </button>
-              <button type="submit" class="btn-primary py-2 text-xs">
+              <button type="submit" className="btn-primary py-2 text-xs">
                 {editingPost ? 'Save Template' : 'Train Model'}
               </button>
             </div>
@@ -222,57 +222,57 @@ What’s your biggest hurdle with organic content? Let’s chat in the comments.
 
       {/* Library Grid list */}
       {loading ? (
-        <div class="flex flex-col items-center justify-center py-20">
-          <Loader2 size={36} class="text-emerald-500 animate-spin mb-3" />
-          <p class="text-slate-500 text-sm">Loading trained style models...</p>
+        <div className="flex flex-col items-center justify-center py-20">
+          <Loader2 size={36} className="text-emerald-500 animate-spin mb-3" />
+          <p className="text-slate-500 text-sm">Loading trained style models...</p>
         </div>
       ) : posts.length === 0 ? (
-        <div class="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-300 rounded-2xl bg-white/50">
-          <div class="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm flex items-center justify-center text-emerald-600 mb-4">
+        <div className="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-300 rounded-2xl bg-white/50">
+          <div className="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm flex items-center justify-center text-emerald-600 mb-4">
             <Library size={28} />
           </div>
-          <h4 class="font-display font-bold text-slate-600 text-base">Training Library is Empty</h4>
-          <p class="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed mb-4">
+          <h4 className="font-display font-bold text-slate-600 text-base">Training Library is Empty</h4>
+          <p className="text-slate-500 text-xs mt-1.5 max-w-sm leading-relaxed mb-4">
             Add style benchmarks or seed default high-converting copywriting templates directly to active RAG queries!
           </p>
-          <button onClick={seedLibrary} class="btn-primary py-2 text-xs">
+          <button onClick={seedLibrary} className="btn-primary py-2 text-xs">
             Seed Default Benchmarks
           </button>
         </div>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {posts.map((post) => (
             <GlassCard key={post._id} hover={true} className="flex flex-col justify-between gap-5 border-slate-200 bg-white">
               <div>
-                <div class="flex items-center justify-between gap-3 mb-3">
-                  <span class="px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold flex items-center gap-1 shadow-sm">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold flex items-center gap-1 shadow-sm">
                     <Tag size={10} /> {post.category}
                   </span>
-                  <span class="text-[10px] text-slate-500 font-semibold font-mono">
+                  <span className="text-[10px] text-slate-500 font-semibold font-mono">
                     {new Date(post.createdAt).toLocaleDateString()}
                   </span>
                 </div>
                 
-                <h4 class="font-bold text-slate-800 text-base mb-2">
+                <h4 className="font-bold text-slate-800 text-base mb-2">
                   {post.title}
                 </h4>
                 
-                <p class="text-slate-600 text-xs whitespace-pre-line bg-slate-50 p-4 rounded-xl border border-slate-200 leading-relaxed max-h-[300px] overflow-y-auto">
+                <p className="text-slate-600 text-xs whitespace-pre-line bg-slate-50 p-4 rounded-xl border border-slate-200 leading-relaxed max-h-[300px] overflow-y-auto">
                   {post.content}
                 </p>
               </div>
 
-              <div class="flex items-center justify-end gap-2 border-t border-slate-100 pt-3 mt-1">
+              <div className="flex items-center justify-end gap-2 border-t border-slate-100 pt-3 mt-1">
                 <button
                   onClick={() => handleEdit(post)}
-                  class="p-1.5 rounded-lg border border-slate-200 hover:border-emerald-300 text-slate-500 hover:text-emerald-600 bg-white hover:bg-emerald-50 active:scale-95 transition-all shadow-sm"
+                  className="p-1.5 rounded-lg border border-slate-200 hover:border-emerald-300 text-slate-500 hover:text-emerald-600 bg-white hover:bg-emerald-50 active:scale-95 transition-all shadow-sm"
                   title="Edit benchmark"
                 >
                   <Edit2 size={13} />
                 </button>
                 <button
                   onClick={() => handleDelete(post._id)}
-                  class="p-1.5 rounded-lg border border-slate-200 hover:border-rose-300 text-slate-500 hover:text-rose-600 bg-white hover:bg-rose-50 active:scale-95 transition-all shadow-sm"
+                  className="p-1.5 rounded-lg border border-slate-200 hover:border-rose-300 text-slate-500 hover:text-rose-600 bg-white hover:bg-rose-50 active:scale-95 transition-all shadow-sm"
                   title="Delete benchmark"
                 >
                   <Trash2 size={13} />

@@ -17,9 +17,9 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div class="min-h-screen bg-slate-50 flex flex-col items-center justify-center text-slate-500">
-        <div class="h-10 w-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-        <p class="text-sm font-semibold tracking-wide">Securing connection...</p>
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center text-slate-500">
+        <div className="h-10 w-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+        <p className="text-sm font-semibold tracking-wide">Securing connection...</p>
       </div>
     );
   }
